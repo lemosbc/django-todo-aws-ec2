@@ -3,7 +3,7 @@ from django.contrib.auth.models import User # imports built-in User model
 
 # Create your models here.
 
-class Taks(models.Model):
+class Task(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
