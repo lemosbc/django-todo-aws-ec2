@@ -50,6 +50,18 @@ class TaskList(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['tasks'] = context['tasks'].filter(user=self.request.user)
         context['count'] = context['tasks'].filter(complete=False).count()
+        
+        # Creates search functionality in our task_list page
+        # Default value is an empty string (for if nothing is searched)
+        search_input = self.request.GET.get('search-area') or ''
+        # If there is a search, filter tasks by search_input
+        if search_input:
+                # startswith to search more broadly
+                # can use icontains instead of 
+            context['tasks'] = context['tasks'].filter(
+                title__startswith=search_input) 
+            
+        context['search_input'] = search_input
         return context
 
 class TaskDetail(LoginRequiredMixin, DetailView):
