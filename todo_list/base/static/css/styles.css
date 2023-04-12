@@ -134,3 +134,11 @@ label {
   cursor: pointer;
   text-decoration: none;
 }
+
+.card-body {
+  padding: 20px;
+}
+
+.register-button {
+  margin-top: 10px;
+}
