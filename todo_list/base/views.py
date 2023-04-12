@@ -56,10 +56,9 @@ class TaskList(LoginRequiredMixin, ListView):
         search_input = self.request.GET.get('search-area') or ''
         # If there is a search, filter tasks by search_input
         if search_input:
-                # startswith to search more broadly
-                # can use icontains instead of 
+                # can startswith instead to narrow search               
             context['tasks'] = context['tasks'].filter(
-                title__startswith=search_input) 
+                title__icontains=search_input) 
             
         context['search_input'] = search_input
         return context
