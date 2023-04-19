@@ -4,7 +4,7 @@ from base.models import Task
 
 class TaskList(generics.ListAPIView):
     serializer_class = TaskSerializer
-    permission_class = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
