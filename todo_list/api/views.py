@@ -9,6 +9,9 @@ class TaskListCreate(generics.ListCreateAPIView):
     def get_queryset(self):
         user = self.request.user
         return Task.objects.filter(user = user, complete = False).order_by('-created')
+    
+    def perform_create(self, serializer):
+        serializer.save(user = self.request.user)
 
 class TaskCompletedList(generics.ListAPIView):
     serializer_class = TaskSerializer
@@ -18,8 +21,6 @@ class TaskCompletedList(generics.ListAPIView):
         user = self.request.user
         return Task.objects.filter(user = user, complete = True).order_by('-created')
     
-    def perform_create(self, serializer):
-        serializer.save(user = self.request.user)
 
 
 
