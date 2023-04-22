@@ -6,5 +6,5 @@
 Application includes an authentication system. A task management application and an API.
 
 <h3>Stack</h3>
-Built with Django and Django REST Framework.
+Built with Django, Django REST Framework and SQLite.
 
